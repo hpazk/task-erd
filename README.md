@@ -1,6 +1,15 @@
 # Task-06 Talent Factory Batch 1
 
-## ERD
+## Studi Kasus
+
+Membangun REST API untuk aplikasi pemesanan Jersey.
+
+### Mini Story Board
+
+- Customer melakukan registrasi untuk mendapatkan akes ke aplikasi, kemudian melihat produk, melakukan pemesanan, dan melakukan checkout pembayaran.
+- Owner memiliki akses untuk mengelola data produk, data pesanan, dan data transaksi
+
+### ERD
 
 [https://dbdiagram.io/d/6003d9ad80d742080a36a3de](https://dbdiagram.io/d/6003d9ad80d742080a36a3de)
 
@@ -10,9 +19,7 @@
 
 Menggunakan Mockoon
 
-Endpoint-endpoint digunakan untuk di-consume di sisi users
-
-Daftar Endpoint diantaranya:
+Daftar Endpoint diantaranya (sample):
 
 - /users , method yang diijinkan GET, POST
 
@@ -38,9 +45,12 @@ Endpoint lainnya:
 
 Membuat dummy data menggunakan faker pada Mockoon (sample)
 
-1. Endpoint Users Method GET
-   ![get-users](docs/get-users.png)
+1. Membuat Endpoint Users dengan Method GET
+   ![mockoon-get-users](docs/mockoon-get-users.png)
 
 ### API Documentation
 
-Membuat dokumentasi API menggunakan Postman
+Membuat dokumentasi API menggunakan Postman (sample)
+
+1. Hit Endpoint - GET: /users
+    ![postman-get-users](docs/postman-get-users.png)
