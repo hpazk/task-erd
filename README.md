@@ -41,7 +41,7 @@ Endpoint lainnya:
 
 - /logout, POST
 
-- /checkout POST , digunakan untuk 
+- /checkout POST , untuk diintegrasikan dengan payment gateway
 
 Membuat dummy data menggunakan faker pada Mockoon (sample)
 
@@ -54,3 +54,5 @@ Hit Endpoint: GET /users
 ### API Documentation
 
 Membuat dokumentasi API menggunakan Postman (sample)
+
+[https://documenter.getpostman.com/view/6704704/TVzXBuyh](https://documenter.getpostman.com/view/6704704/TVzXBuyh)

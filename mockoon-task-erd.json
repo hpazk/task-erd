@@ -1,0 +1,451 @@
+{
+    "source": "mockoon:1.11.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "lastMigration": 13,
+                "name": "TASK-06 Talent Factory Batch 1",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 3001,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "user registration",
+                        "method": "post",
+                        "endpoint": "registration",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": \n    {\n      \"code\": 201,\n      \"status\": \"success\",\n      \"message\": \"Registration successfully\"\n    },\n  \"data\": {\n    \"access_token\": \"5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy\",\n    \"token_type\": \"Bearer\",\n    \"user\": {\n      \"email\": \"{{ body 'email' }}\",\n      \"password\": \"{{ body 'password' }}\",\n      \"profilePhotoPath\": null,\n      \"firstname\": \"{{ body 'firstName' }}\",\n      \"lastname\": \"{{ body 'lastName' }}\",\n      \"address\": \"{{ body 'address' }}\",\n      \"city\": \"{{ body 'city' }}\",\n      \"phoneNumber\": \"{{ body 'phoneNumber' }}\",\n      \"memberType\": \"{{ body 'memberType' 'Standard' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    }\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 201,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "get all users",
+                        "method": "get",
+                        "endpoint": "users",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Users list successfully fetched\"\n  },\n  \"data\": [\n    {{# repeat (queryParam 'total' '10') }}\n      {\n        \"id\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n        \"email\": \"{{ faker 'internet.email' }}\",\n        \"firstname\": \"{{ faker 'name.firstName' }}\",\n        \"lastname\": \"{{ faker 'name.lastName' }}\",\n        \"profilePhotoPath\": \"{{ faker 'internet.avatar' }}\",\n        \"address\": \"{{ faker 'address.cityPrefix' }}\",\n        \"city\": \"{{ faker 'address.city' }}\"\n        \"phoneNumber\": \"{{ faker 'random.number' min=8000000000 max=8999999999 }}\",\n        \"memberType\": \"{{ oneOf (array 'Standard' 'Gold' 'Platinum') }}\",\n        \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n        \"updated_at\": null,\n        \"deleted_at\": null\n      },\n    {{/ repeat }}\n  ],\n  \"total\": 10\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"code\": 404,\n  \"status\": \"error\",\n  \"message\": \"Data not found\"\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "get all users",
+                        "method": "put",
+                        "endpoint": "users/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": \n    {\n      \"code\": 200,\n      \"status\": \"success\",\n      \"message\": \"User succesfully updated\"\n    },\n    \"data\": {\n      \"id\": \"{{urlParam 'id' }}\"\n      \"email\": \"{{ body 'email' }}\",\n      \"password\": \"{{ body 'password' }}\",\n      \"profilePhotoPath\": \"{{ body 'profilePhotoPath' }}\",\n      \"firstname\": \"{{ body 'firstName' }}\",\n      \"lastname\": \"{{ body 'lastName' }}\",\n      \"address\": \"{{ body 'address' }}\",\n      \"city\": \"{{ body 'city' }}\",\n      \"phoneNumber\": \"{{ body 'phoneNumber' }}\",\n      \"memberType\": \"{{ body 'memberType' 'Standard' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"deleted_at\": null\n    }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"code\": 404,\n  \"status\": \"error\",\n  \"message\": \"Data not found\"\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "get all users",
+                        "method": "delete",
+                        "endpoint": "users/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"User was deleted\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"code\": 404,\n  \"status\": \"error\",\n  \"message\": \"Data not found\"\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "user login",
+                        "method": "post",
+                        "endpoint": "login",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n      \"code\": 200,\n      \"status\": \"success\",\n      \"message\": \"User Authenticated\"\n  },\n  \"data\": {\n    \"access_token\": \"5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy\",\n    \"token_type\": \"Bearer\",\n    \"user\": {\n      \"id\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n      \"email\": \"{{ body 'email' }}\",\n      \"firstname\": \"{{ faker 'name.firstName' }}\",\n      \"lastname\": \"{{ faker 'name.lastName' }}\",\n      \"profilePhotoPath\": \"{{ faker 'internet.avatar' }}\",\n      \"address\": \"{{ faker 'address.cityPrefix' }}\",\n      \"city\": \"{{ faker 'address.city' }}\",\n      \"phoneNumber\": \"{{ faker 'random.number' min=8000000000 max=8999999999 }}\",\n      \"memberType\": \"{{ oneOf (array 'Standard' 'Gold' 'Platinum') }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    }\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "AND",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 401,\n    \"status\": \"error\",\n    \"message\": \"User unauthorized, check email or password\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 401,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "get all products",
+                        "method": "get",
+                        "endpoint": "products",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n      \"code\": 200,\n      \"status\": \"success\",\n      \"message\": \"Users list successfully fetched\"\n  },\n  \"data\": [\n    {\n      \"id\": 1,\n      \"name\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    {\n      \"id\": 2,\n      \"codeName\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    {\n     \"id\": 3,\n      \"codeName\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    {\n      \"id\": 4,\n      \"codeName\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    {\n      \"id\": 5,\n      \"codeName\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    }\n  ],\n  \"total\": 5\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 404,\n    \"status\": \"error\",\n    \"message\": \"Data not found\"\n  }, \n  \"data\": []\n}",
+                                "latency": 0,
+                                "statusCode": 404,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "create order",
+                        "method": "post",
+                        "endpoint": "orders",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n      \"code\": 200,\n      \"status\": \"success\",\n      \"message\": \"Users list successfully fetched\"\n  },\n  \"orders\": {\n    \"id\": \"{{ faker 'random.number' min=100 max=1000 }}\",\n    \"userId\": \"{{ body 'userId' }}\",\n    \"productId\": \"{{body 'productId' }}\",\n    \"customImagePath\": \"{{ body 'customImagePath' }}\",\n    \"quantity\": \"{{ body 'quantity' }}\",\n    \"size\": \"{{ body 'size' }}\",\n    \"total\": \"{{ faker 'random.number' min=100000 max=1000000 }}\",\n    \"status\": \"pending\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            },
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 500,\n    \"status\": \"error\",\n    \"message\": \"Something went wrong\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 500,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "",
+                                        "value": ""
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": true
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "update transaction",
+                        "method": "put",
+                        "endpoint": "transactions/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Data successfully updated\"\n  },\n  \"data\": {\n    \"id\": \"{{ urlPram 'id' }}\",\n    \"quantity\": \"{{faker 'random.number' min=1 max=10000 }}\",\n    \"total\": \"{{faker 'random.number' min=90000 max=10000000 }}\",\n    \"status\": \"{{ body 'status' }}\"\n    \"payment_url\": \"https://app.sandbox.midtrans.com/snap/v2/vtweb/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx#/select-payment\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"deleted_at\": null,\n  },\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "checkout process",
+                        "method": "get",
+                        "endpoint": "checkout/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Data successfully fetched\"\n  },\n  \"data\": {\n    \"transactionId\": \"{{urlParam 'id' }}\"\n    \"orderId\": \"{{faker 'random.number' min=1 max=1000 }}\",\n    \"userId\": \"{{faker 'random.number' min=1 max=10 }}\",\n    \"quantity\": \"{{faker 'random.number' min=1 max=10000 }}\",\n    \"total\": \"{{faker 'random.number' min=90000 max=10000000 }}\",\n    \"status\": \"PENDING\",\n    \"payment_url\": \"https://app.sandbox.midtrans.com/snap/v2/vtweb/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx#/select-payment\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"deleted_at\": null,\n    \"user\": {\n      \"id\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n      \"email\": \"{{ faker 'internet.email' }}\",\n      \"firstname\": \"{{ faker 'name.firstName' }}\",\n      \"lastname\": \"{{ faker 'name.lastName' }}\",\n      \"profilePhotoPath\": \"{{ faker 'internet.avatar' }}\",\n      \"address\": \"{{ faker 'address.cityPrefix' }}\",\n      \"city\": \"{{ faker 'address.city' }}\"\n      \"phoneNumber\": \"{{ faker 'random.number' min=8000000000 max=8999999999 }}\",\n      \"memberType\": \"{{ oneOf (array 'Standard' 'Gold' 'Platinum') }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    },\n    \"product\": {\n      \"id\": 1,\n      \"name\": \"{{ faker 'name.firstName' }}\",\n      \"description\": \"{{ faker 'name.lastName' }}\",\n      \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n      \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n      \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n      \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n      \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n      \"updated_at\": null,\n      \"deleted_at\": null\n    }\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "get transaction",
+                        "method": "get",
+                        "endpoint": "transactions/:id",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Data successfully fetched\"\n  },\n  \"data\": {\n    \"id\": \"{{ urlParam 'id' }}\",\n    \"quantity\": \"{{faker 'random.number' min=1 max=100 }}\",\n    \"total\": \"{{faker 'random.number' min=90000 max=1000000 }}\",\n    \"status\": \"{{ queryParam 'status' }}\",\n    \"payment_url\": \"https://app.sandbox.midtrans.com/snap/v2/vtweb/xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx#/select-payment\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"deleted_at\": null,\n  },\n  \"user\": {\n    \"id\": \"{{ faker 'random.number' min=10000 max=100000 }}\",\n    \"email\": \"{{ faker 'internet.email' }}\",\n    \"firstname\": \"{{ faker 'name.firstName' }}\",\n    \"lastname\": \"{{ faker 'name.lastName' }}\",\n    \"profilePhotoPath\": \"{{ faker 'internet.avatar' }}\",\n    \"address\": \"{{ faker 'address.cityPrefix' }}\",\n    \"city\": \"{{ faker 'address.city' }}\",\n    \"phoneNumber\": \"{{ faker 'random.number' min=8000000000 max=8999999999 }}\",\n    \"memberType\": \"{{ oneOf (array 'Standard' 'Gold' 'Platinum') }}\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n  },\n  \"product\": {\n    \"id\": 1,\n    \"name\": \"{{ faker 'name.firstName' }}\",\n    \"description\": \"{{ faker 'name.lastName' }}\",\n    \"category\": \"{{ oneOf (array 'short' 'long' 'jacket') }}\",\n    \"price\": \"{{ faker 'random.number' min=9000 max=150000 }}\",\n    \"rate\": \"{{ faker 'random.number' min=1 max=5 }}\",\n    \"picturePath\": \"{{ faker 'internet.avatar' }}\",\n    \"created_at\": \"{{ faker 'random.number' min=1610000000 max=1699999999 }}\",\n    \"updated_at\": null,\n    \"deleted_at\": null\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    },
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "logout",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "body": "{\n  \"meta\": {\n    \"code\": 200,\n    \"status\": \"success\",\n    \"message\": \"Token revoked\"\n  }\n}",
+                                "latency": 0,
+                                "statusCode": 200,
+                                "label": "",
+                                "headers": [
+                                    {
+                                        "key": "Authorization",
+                                        "value": "Bearer 5|QGnwvs3Jz7RWQrbtgKxr7KKxp3MvdSCIfLqa3wyy"
+                                    }
+                                ],
+                                "filePath": "",
+                                "sendFileAsBody": false,
+                                "rules": [],
+                                "rulesOperator": "OR",
+                                "disableTemplating": false
+                            }
+                        ],
+                        "enabled": true,
+                        "randomResponse": false
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "proxyReqHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "proxyResHeaders": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ]
+            }
+        }
+    ]
+}
