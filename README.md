@@ -17,7 +17,7 @@ Membangun REST API untuk aplikasi pemesanan Jersey.
 
 ### Mock API
 
-Menggunakan Mockoon
+Menggunakan Mockoon untuk tujuan latihan
 
 Daftar Endpoint diantaranya (sample):
 
@@ -41,16 +41,16 @@ Endpoint lainnya:
 
 - /logout, POST
 
-- /checkout POST
+- /checkout POST , digunakan untuk 
 
 Membuat dummy data menggunakan faker pada Mockoon (sample)
 
-1. Membuat Endpoint Users dengan Method GET
+Membuat Endpoint Users dengan Method GET
    ![mockoon-get-users](docs/mockoon-get-users.png)
+
+Hit Endpoint: GET /users
+    ![postman-get-users](docs/postman-get-users.png)
 
 ### API Documentation
 
 Membuat dokumentasi API menggunakan Postman (sample)
-
-1. Hit Endpoint - GET: /users
-    ![postman-get-users](docs/postman-get-users.png)
