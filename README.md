@@ -13,8 +13,6 @@ Membangun REST API untuk aplikasi pemesanan Jersey.
 
 [https://dbdiagram.io/d/6003d9ad80d742080a36a3de](https://dbdiagram.io/d/6003d9ad80d742080a36a3de)
 
-### Deskripsi Tabel
-
 ### Mock API
 
 Menggunakan Mockoon untuk tujuan latihan
